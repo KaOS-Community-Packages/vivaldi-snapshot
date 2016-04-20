@@ -12,7 +12,7 @@ depends=('gcc-libs' 'gtk2' 'nss' 'gconf' 'libjpeg-turbo' 'freetype2' 'cairo' 'li
 optdepends=('pepper-flash: Pepper Flash plugin')
 install=${pkgname}.install
 source=("https://downloads.vivaldi.com/${_branch}/${pkgname}_${pkgver}-1_amd64.deb")
-md5sums=('cc3463dc28bb437e7c31332ea0aeb2ea')
+md5sums=('7e01f5b6d93112adb5b5c71f36ead942')
 
 package() {
 	msg "Extracting Vivaldi"
@@ -32,4 +32,3 @@ package() {
 	chmod 4755 "${pkgdir}/opt/vivaldi-${_branch}/vivaldi-sandbox"
 	msg "Installation finished!"
 }
-md5sums=('7e01f5b6d93112adb5b5c71f36ead942')
