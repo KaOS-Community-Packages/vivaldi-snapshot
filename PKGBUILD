@@ -1,5 +1,5 @@
 pkgname=vivaldi-snapshot
-pkgver=1.1.453.43
+pkgver=1.1.453.45
 pkgrel=1
 _branch="snapshot"
 pkgdesc='The web browser from Vivaldi / Vivaldi browser is made for power users in mind by people who love the Web. (snapshot version)'
@@ -11,8 +11,9 @@ depends=('gcc-libs' 'gtk2' 'nss' 'gconf' 'libjpeg-turbo' 'freetype2' 'cairo' 'li
          'libpng' 'alsa-lib' 'libxss' 'hicolor-icon-theme' 'xdg-utils' 'vivaldi-ffmpeg')
 optdepends=('pepper-flash: Pepper Flash plugin')
 install=${pkgname}.install
+backup=("opt/vivaldi-${_branch}/resources/vivaldi/style/custom.css")
 source=("https://downloads.vivaldi.com/${_branch}/${pkgname}_${pkgver}-1_amd64.deb")
-md5sums=('c45e00079cabed5227f1ca03b215203e')
+md5sums=('1fe2f21799e0b05881b21b15814edd31')
 
 package() {
 	msg "Extracting Vivaldi"
@@ -30,5 +31,9 @@ package() {
 	ln -s /opt/vivaldi/lib/libffmpeg.so "$pkgdir"/opt/vivaldi-${_branch}/lib/libffmpeg.so
 	#Correct rights
 	chmod 4755 "${pkgdir}/opt/vivaldi-${_branch}/vivaldi-sandbox"
+	msg "Add a hack to modify UI"
+	sed -i 's|^|@import "custom.css";|' "$pkgdir"/opt/vivaldi-${_branch}/resources/vivaldi/style/common.css
+	touch "$pkgdir"/opt/vivaldi-${_branch}/resources/vivaldi/style/custom.css
+	chmod 666 "$pkgdir"/opt/vivaldi-${_branch}/resources/vivaldi/style/custom.css
 	msg "Installation finished!"
 }
