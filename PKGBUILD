@@ -19,7 +19,6 @@ package() {
 	bsdtar -xf data.tar.xz -C "${pkgdir}/" 
 	msg2 "Done extracting!"
 	msg "Actual installation"
-	ln -s /usr/lib/libudev.so.1 "${pkgdir}/opt/vivaldi-${_branch}/libudev.so.0"
 	for i in 16 22 24 32 48 64 128 256; do
 	install -Dm644 "$pkgdir"/opt/vivaldi-${_branch}/product_logo_${i}.png "$pkgdir"/usr/share/icons/hicolor/${i}x${i}/apps/vivaldi-${_branch}.png
 	done
@@ -34,5 +33,8 @@ package() {
 	sed -i 's|^|@import "custom.css";|' "$pkgdir"/opt/vivaldi-${_branch}/resources/vivaldi/style/common.css
 	touch "$pkgdir"/opt/vivaldi-${_branch}/resources/vivaldi/style/custom.css
 	chmod 666 "$pkgdir"/opt/vivaldi-${_branch}/resources/vivaldi/style/custom.css
+	#miss symlink in /usr/bin
+	mkdir -p ${pkgdir}/usr/bin
+	ln -sf "/opt/vivaldi-${_branch}/vivaldi-${_branch}" "${pkgdir}/usr/bin/vivaldi-${_branch}"
 	msg "Installation finished!"
 }
