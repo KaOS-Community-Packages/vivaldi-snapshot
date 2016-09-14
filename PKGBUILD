@@ -1,5 +1,5 @@
 pkgname=vivaldi-snapshot
-pkgver=1.4.589.4
+pkgver=1.5.604.4
 pkgrel=1
 _branch="snapshot"
 pkgdesc='The web browser from Vivaldi / Vivaldi browser is made for power users in mind by people who love the Web. (snapshot version)'
@@ -12,7 +12,7 @@ depends=('gcc-libs' 'gtk2' 'nss' 'gconf' 'libjpeg-turbo' 'freetype2' 'cairo' 'li
 optdepends=('pepper-flash: Pepper Flash plugin')
 backup=("opt/vivaldi-${_branch}/resources/vivaldi/style/custom.css")
 source=("https://downloads.vivaldi.com/${_branch}/${pkgname}_${pkgver}-1_amd64.deb")
-md5sums=('b49958fbc15fd96681232525e4715b6e')
+md5sums=('fd61ed2e12bfa41b53ff9d36e5c931ce')
 
 package() {
 	msg "Extracting Vivaldi"
@@ -33,8 +33,5 @@ package() {
 	sed -i 's|^|@import "custom.css";|' "$pkgdir"/opt/vivaldi-${_branch}/resources/vivaldi/style/common.css
 	touch "$pkgdir"/opt/vivaldi-${_branch}/resources/vivaldi/style/custom.css
 	chmod 666 "$pkgdir"/opt/vivaldi-${_branch}/resources/vivaldi/style/custom.css
-	#miss symlink in /usr/bin
-	mkdir -p ${pkgdir}/usr/bin
-	ln -sf "/opt/vivaldi-${_branch}/vivaldi-${_branch}" "${pkgdir}/usr/bin/vivaldi-${_branch}"
 	msg "Installation finished!"
 }
