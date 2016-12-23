@@ -1,6 +1,6 @@
 pkgname=vivaldi-snapshot
 pkgver=1.7.705.3
-pkgrel=1
+pkgrel=2
 _branch="snapshot"
 pkgdesc='The web browser from Vivaldi / Vivaldi browser is made for power users in mind by people who love the Web. (snapshot version)'
 arch=('x86_64')
@@ -8,7 +8,7 @@ url="https://vivaldi.com"
 license=('custom: Vivaldi')
 options=('!strip' '!emptydirs')
 depends=('gcc-libs' 'gtk2' 'nss' 'gconf' 'libjpeg-turbo' 'freetype2' 'cairo' 'libxslt'
-         'libpng' 'alsa-lib' 'libxss' 'hicolor-icon-theme' 'xdg-utils' 'chromium-ffmpeg-codecs')
+         'libpng' 'alsa-lib' 'libxss' 'hicolor-icon-theme' 'xdg-utils' 'chromium-ffmpeg-codecs' 'widevine')
 optdepends=('pepper-flash: Pepper Flash plugin')
 backup=("opt/vivaldi-${_branch}/resources/vivaldi/style/custom.css")
 source=("https://downloads.vivaldi.com/${_branch}/${pkgname}_${pkgver}-1_amd64.deb")
@@ -27,6 +27,7 @@ package() {
 	rm "$pkgdir"/opt/vivaldi-${_branch}/product_logo_*.png
 	msg "installing ffmpeg official support (H.264)"
 	ln -s /usr/lib/chromium/libs/libffmpeg.so "$pkgdir"/opt/vivaldi-${_branch}/lib/libffmpeg.so
+	ln -sf /opt/google/chrome-unstable/libwidevinecdm.so "$pkgdir"/opt/vivaldi-${_branch}/libwidevinecdm.so
 	#Correct rights
 	chmod 4755 "${pkgdir}/opt/vivaldi-${_branch}/vivaldi-sandbox"
 	msg "Add a hack to modify UI"
