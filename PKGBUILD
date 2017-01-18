@@ -19,6 +19,7 @@ package() {
 	bsdtar -xf data.tar.xz -C "${pkgdir}/" 
 	msg2 "Done extracting!"
 	msg "Actual installation"
+	local i
 	for i in 16 22 24 32 48 64 128 256; do
 	install -Dm644 "$pkgdir"/opt/vivaldi-${_branch}/product_logo_${i}.png "$pkgdir"/usr/share/icons/hicolor/${i}x${i}/apps/vivaldi-${_branch}.png
 	done
