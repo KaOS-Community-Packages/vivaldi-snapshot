@@ -1,5 +1,5 @@
 pkgname=vivaldi-snapshot
-pkgver=1.8.770.9
+pkgver=1.8.770.25
 pkgrel=1
 _branch="snapshot"
 pkgdesc='The web browser from Vivaldi / Vivaldi browser is made for power users in mind by people who love the Web. (snapshot version)'
@@ -10,9 +10,8 @@ options=('!strip' '!emptydirs')
 depends=('gcc-libs' 'gtk2' 'nss' 'gconf' 'libjpeg-turbo' 'freetype2' 'cairo' 'libxslt'
          'libpng' 'alsa-lib' 'libxss' 'hicolor-icon-theme' 'xdg-utils' 'chromium-ffmpeg-codecs' 'widevine')
 optdepends=('pepper-flash: Pepper Flash plugin')
-#backup=("opt/vivaldi-${_branch}/resources/vivaldi/style/custom.css")
 source=("https://downloads.vivaldi.com/${_branch}/${pkgname}_${pkgver}-1_amd64.deb")
-sha1sums=('f946b9ff840580b348320c3ecf821511aff6f847')
+sha1sums=('8d34733473b33f919f605cfd8a8d5c1ab768c38a')
 
 package() {
 	msg "Extracting Vivaldi"
@@ -31,9 +30,5 @@ package() {
 	ln -sf /opt/google/chrome-unstable/libwidevinecdm.so "$pkgdir"/opt/vivaldi-${_branch}/libwidevinecdm.so
 	#Correct rights
 	chmod 4755 "${pkgdir}/opt/vivaldi-${_branch}/vivaldi-sandbox"
-	#msg "Add a hack to modify UI"
-	#sed -i 's|^|@import "custom.css";|' "$pkgdir"/opt/vivaldi-${_branch}/resources/vivaldi/style/common.css
-	#touch "$pkgdir"/opt/vivaldi-${_branch}/resources/vivaldi/style/custom.css
-	#chmod 666 "$pkgdir"/opt/vivaldi-${_branch}/resources/vivaldi/style/custom.css
 	msg "Installation finished!"
 }
