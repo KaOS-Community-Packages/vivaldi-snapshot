@@ -1,5 +1,5 @@
 pkgname=vivaldi-snapshot
-pkgver=1.8.770.32
+pkgver=1.8.770.38
 pkgrel=1
 _branch="snapshot"
 pkgdesc='The web browser from Vivaldi / Vivaldi browser is made for power users in mind by people who love the Web. (snapshot version)'
@@ -11,7 +11,7 @@ depends=('gcc-libs' 'gtk2' 'nss' 'gconf' 'libjpeg-turbo' 'freetype2' 'cairo' 'li
          'libpng' 'alsa-lib' 'libxss' 'hicolor-icon-theme' 'xdg-utils' 'chromium-ffmpeg-codecs' 'widevine')
 optdepends=('pepper-flash: Pepper Flash plugin')
 source=("https://downloads.vivaldi.com/${_branch}/${pkgname}_${pkgver}-1_amd64.deb")
-sha1sums=('1f916c202aaca03f53831335de4f903d42520099')
+sha1sums=('dd10dd6483aab1ff3077f389c3cab164844c70db')
 
 package() {
 	msg "Extracting Vivaldi"
