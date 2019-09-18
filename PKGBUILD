@@ -1,6 +1,6 @@
 pkgname=vivaldi-snapshot
 pkgver=2.8.1664.30
-pkgrel=1
+pkgrel=2
 _branch="snapshot"
 pkgdesc='The web browser from Vivaldi / Vivaldi browser is made for power users in mind by people who love the Web. (snapshot version)'
 arch=('x86_64')
@@ -27,7 +27,7 @@ package() {
 	rm "$pkgdir"/opt/vivaldi-${_branch}/product_logo_*.png
 	msg "installing ffmpeg official support (H.264)"
 	ln -s /usr/lib/chromium/libs/libffmpeg.so "$pkgdir"/opt/vivaldi-${_branch}/lib/libffmpeg.so
-	ln -sf /opt/google/chrome-unstable/libwidevinecdm.so "$pkgdir"/opt/vivaldi-${_branch}/libwidevinecdm.so
+	ln -sf /opt/google/chrome-unstable/WidevineCdm/_platform_specific/linux_x64/libwidevinecdm.so "$pkgdir"/opt/vivaldi-${_branch}/libwidevinecdm.so
 	#Correct rights
 	chmod 4755 "${pkgdir}/opt/vivaldi-${_branch}/vivaldi-sandbox"
 	msg "Installation finished!"
