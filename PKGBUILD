@@ -1,5 +1,5 @@
 pkgname=vivaldi-snapshot
-pkgver=2.9.1705.30
+pkgver=2.9.1732.13
 pkgrel=1
 _branch="snapshot"
 pkgdesc='The web browser from Vivaldi / Vivaldi browser is made for power users in mind by people who love the Web. (snapshot version)'
@@ -11,7 +11,7 @@ depends=('gcc-libs' 'gtk3' 'nss' 'libjpeg-turbo' 'freetype2' 'cairo' 'libxslt'
          'libpng' 'alsa-lib' 'libxss' 'hicolor-icon-theme' 'xdg-utils' 'chromium-ffmpeg-codecs' 'widevine')
 optdepends=('pepper-flash: Pepper Flash plugin')
 source=("https://downloads.vivaldi.com/${_branch}/${pkgname}_${pkgver}-1_amd64.deb")
-sha1sums=('c70d33d5361876a597af697cdee7655cd9869ba0')
+sha1sums=('4feb0609b4df57a7d2aae0d3fef2d7f8dee40a58')
 
 package() {
 	msg "Extracting Vivaldi"
@@ -22,12 +22,14 @@ package() {
 	for i in 16 22 24 32 48 64 128 256; do
 	install -Dm644 "$pkgdir"/opt/vivaldi-${_branch}/product_logo_${i}.png "$pkgdir"/usr/share/icons/hicolor/${i}x${i}/apps/vivaldi-${_branch}.png
 	done
-	msg "Removing unsupported ffmpeg and duplicated images"
-	rm "$pkgdir"/opt/vivaldi-${_branch}/lib/libffmpeg.so
+	msg "Removing duplicated images"
+	#rm "$pkgdir"/opt/vivaldi-${_branch}/lib/libffmpeg.so
 	rm "$pkgdir"/opt/vivaldi-${_branch}/product_logo_*.png
-	msg "installing ffmpeg official support (H.264)"
-	ln -s /usr/lib/chromium/libs/libffmpeg.so "$pkgdir"/opt/vivaldi-${_branch}/lib/libffmpeg.so
-	ln -sf /opt/google/chrome-unstable/WidevineCdm/_platform_specific/linux_x64/libwidevinecdm.so "$pkgdir"/opt/vivaldi-${_branch}/libwidevinecdm.so
+	msg "installing proprietary codecs"
+	#ln -s /usr/lib/chromium/libs/libffmpeg.so "$pkgdir"/opt/vivaldi-${_branch}/lib/libffmpeg.so
+	#ln -sf /opt/google/chrome-unstable/WidevineCdm/_platform_specific/linux_x64/libwidevinecdm.so "$pkgdir"/opt/vivaldi-${_branch}/libwidevinecdm.so
+	ln -sf /usr/lib/chromium/libs/libffmpeg.so "${pkgdir}/opt/vivaldi-${_branch}/libffmpeg.so.${pkgver%\.*\.*}"
+	ln -sf /opt/google/chrome-unstable/WidevineCdm "${pkgdir}/opt/vivaldi-${_branch}/WidevineCdm"
 	#Correct rights
 	chmod 4755 "${pkgdir}/opt/vivaldi-${_branch}/vivaldi-sandbox"
 	msg "Installation finished!"
