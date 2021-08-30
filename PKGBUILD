@@ -1,5 +1,5 @@
 pkgname=vivaldi-snapshot
-pkgver=4.2.2392.3
+pkgver=4.2.2406.4
 pkgrel=1
 _branch="snapshot"
 pkgdesc='The web browser from Vivaldi / Vivaldi browser is made for power users in mind by people who love the Web. (snapshot version)'
@@ -10,7 +10,7 @@ options=('!strip' '!emptydirs')
 depends=('gcc-libs' 'gtk3' 'nss' 'libjpeg-turbo' 'freetype2' 'cairo' 'libxslt'
          'libpng' 'alsa-lib' 'libxss' 'hicolor-icon-theme' 'xdg-utils' 'chromium-ffmpeg-codecs' 'widevine')
 source=("https://downloads.vivaldi.com/${_branch}/${pkgname}_${pkgver}-1_amd64.deb")
-sha1sums=('e1d8a1277a0e30cead1302116cb51f6c45608bea')
+sha1sums=('51f1dd222c1996ba5786d21c92e6ea8f6085c9d6')
 
 package() {
 	msg "Extracting Vivaldi"
@@ -27,7 +27,7 @@ package() {
 	msg "installing proprietary codecs"
 	#ln -s /usr/lib/chromium/libs/libffmpeg.so "$pkgdir"/opt/vivaldi-${_branch}/lib/libffmpeg.so
 	#ln -sf /opt/google/chrome-unstable/WidevineCdm/_platform_specific/linux_x64/libwidevinecdm.so "$pkgdir"/opt/vivaldi-${_branch}/libwidevinecdm.so
-	ln -sf /usr/lib/chromium/libs/libffmpeg.so "${pkgdir}/opt/vivaldi-${_branch}/libffmpeg.so.${pkgver%\.*\.*}"
+#	ln -sf /usr/lib/chromium/libs/libffmpeg.so "${pkgdir}/opt/vivaldi-${_branch}/libffmpeg.so.${pkgver%\.*\.*}"
 	ln -sf /opt/google/chrome-unstable/WidevineCdm "${pkgdir}/opt/vivaldi-${_branch}/WidevineCdm"
 	#Correct rights
 	chmod 4755 "${pkgdir}/opt/vivaldi-${_branch}/vivaldi-sandbox"
