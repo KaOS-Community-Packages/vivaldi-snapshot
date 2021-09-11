@@ -1,5 +1,5 @@
 pkgname=vivaldi-snapshot
-pkgver=4.2.2406.23
+pkgver=4.2.2406.25
 pkgrel=1
 _branch="snapshot"
 pkgdesc='The web browser from Vivaldi / Vivaldi browser is made for power users in mind by people who love the Web. (snapshot version)'
@@ -10,7 +10,7 @@ options=('!strip' '!emptydirs')
 depends=('gcc-libs' 'gtk3' 'nss' 'libjpeg-turbo' 'freetype2' 'cairo' 'libxslt'
          'libpng' 'alsa-lib' 'libxss' 'hicolor-icon-theme' 'xdg-utils' 'widevine')
 source=("https://downloads.vivaldi.com/${_branch}/${pkgname}-${pkgver}-linux64.tzst")
-sha1sums=('fc7d1c8b365c71cf49f9dfa4351430f857a89774')
+sha1sums=('a25360100719857c6843e2c662659e37aa7abf01')
 
 prepare() {
 	sed -i 's|/usr/local/bin|/usr/bin|g' "${srcdir}/usr/local/share/applications/${pkgname}.desktop"
