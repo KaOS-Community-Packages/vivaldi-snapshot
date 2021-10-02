@@ -1,5 +1,5 @@
 pkgname=vivaldi-snapshot
-pkgver=4.3.2431.3
+pkgver=4.3.2439.3
 pkgrel=1
 _branch="snapshot"
 pkgdesc='The web browser from Vivaldi / Vivaldi browser is made for power users in mind by people who love the Web. (snapshot version)'
@@ -9,12 +9,8 @@ license=('custom: Vivaldi')
 options=('!strip' '!emptydirs')
 depends=('gcc-libs' 'gtk3' 'nss' 'libjpeg-turbo' 'freetype2' 'cairo' 'libxslt'
          'libpng' 'alsa-lib' 'libxss' 'hicolor-icon-theme' 'xdg-utils' 'widevine')
-source=("https://downloads.vivaldi.com/${_branch}/${pkgname}-${pkgver}-linux64.tzst")
-sha256sums=('ea743b4bd0b114aa3528bc30018dab0a01c3ef3107f8d15dcf05860d387f644c')
-
-prepare() {
-	sed -i 's|/usr/local/bin|/usr/bin|g' "${srcdir}/usr/local/share/applications/${pkgname}.desktop"
-}
+source=("https://downloads.vivaldi.com/${_branch}/${pkgname}-${pkgver}-1.x86_64.rpm")
+sha256sums=('aa8c78f11486e3a6d5b21567f9495e8494539ea1ab097344b318a7c15428dc83')
 
 package() {
 	msg "Prepare dirs"
@@ -24,9 +20,9 @@ package() {
 
 	msg "Copy files"
 	cp -r "${srcdir}/opt/${pkgname}/"* "${pkgdir}/opt/${pkgname}"
-	install -Dm644 "${srcdir}/usr/local/share/appdata/${pkgname}.appdata.xml" \
+	install -Dm644 "${srcdir}/usr/share/appdata/${pkgname}.appdata.xml" \
 		             "${pkgdir}/usr/share/appdata/${pkgname}.appdata.xml"
-	install -Dm644 "${srcdir}/usr/local/share/applications/${pkgname}.desktop" \
+	install -Dm644 "${srcdir}/usr/share/applications/${pkgname}.desktop" \
 		             "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 
 	msg "Copy icons"
