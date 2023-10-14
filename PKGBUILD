@@ -1,5 +1,5 @@
 pkgname=vivaldi-snapshot
-pkgver=6.4.3149.7
+pkgver=6.4.3160.25
 pkgrel=1
 _branch="snapshot"
 pkgdesc='The web browser from Vivaldi / Vivaldi browser is made for power users in mind by people who love the Web. (snapshot version)'
@@ -10,7 +10,7 @@ options=('!strip' '!emptydirs')
 depends=('gcc-libs' 'gtk3' 'nss' 'libjpeg-turbo' 'freetype2' 'cairo' 'libxslt'
          'libpng' 'alsa-lib' 'libxss' 'hicolor-icon-theme' 'xdg-utils' 'widevine')
 source=("https://downloads.vivaldi.com/${_branch}/${pkgname}-${pkgver}-1.x86_64.rpm")
-sha256sums=('395341f6dad9975c3a3bcb04a2c1bc0af2f2d09ac61837d0601bac5d0677ef28')
+sha256sums=('478658f3da7fa7498043f38ddd562def5753575db19cb9be77c136dd4a240082')
 
 package() {
 	msg "Prepare dirs"
