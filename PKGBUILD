@@ -1,5 +1,5 @@
 pkgname=vivaldi-snapshot
-pkgver=6.4.3160.27
+pkgver=6.4.3160.29
 pkgrel=1
 _branch="snapshot"
 pkgdesc='The web browser from Vivaldi / Vivaldi browser is made for power users in mind by people who love the Web. (snapshot version)'
@@ -45,3 +45,4 @@ package() {
 	chmod 4755 "${pkgdir}/opt/${pkgname}/vivaldi-sandbox"
 	msg "Installation finished!"
 }
+sha256sums=('0733c7faf698031c79bf5564df2126107f94ccc8fc09b48d991d63867f349c09')
