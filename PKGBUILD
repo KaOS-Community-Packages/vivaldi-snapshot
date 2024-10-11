@@ -10,7 +10,7 @@ options=('!strip' '!emptydirs')
 depends=('gcc-libs' 'gtk3' 'nss' 'libjpeg-turbo' 'freetype2' 'cairo' 'libxslt'
          'libpng' 'alsa-lib' 'libxss' 'hicolor-icon-theme' 'xdg-utils' 'widevine')
 source=("https://downloads.vivaldi.com/${_branch}/${pkgname}-${pkgver}-1.x86_64.rpm")
-sha256sums=('a067709146a5330d9d6337676958263b15261bbdff3d05f1dbf749a5c8c24427')
+sha256sums=('b7f5d44f179eafe677a29987faba376d4688ad893c3574ca7180b750fbdb6d57')
 
 package() {
 	msg "Prepare dirs"
@@ -45,4 +45,3 @@ package() {
 	chmod 4755 "${pkgdir}/opt/${pkgname}/vivaldi-sandbox"
 	msg "Installation finished!"
 }
-sha256sums=('b7f5d44f179eafe677a29987faba376d4688ad893c3574ca7180b750fbdb6d57')
